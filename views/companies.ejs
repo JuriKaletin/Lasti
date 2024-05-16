@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companies</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <link rel="apple-touch-icon" href="/images/lasti-logo.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+    <div class="main-container">
+        <div class="back-button-container" id="back-button">
+            <img src="/images/back-button.png" alt="">
+        </div>
+
+        
+        <div class="companies-container" id="companies-container">
+            <input type="text" id="city-search" placeholder="Sisestage linn" oninput="search()">
+
+            <h1><%= text %></h1>
+            <div class="companies">
+                <% companies.forEach(function(company) { %>
+                    <div class="company" onclick="showCompany('<%= company.companyName %>', '<%= company.email %>', '<%= company.phone %>', '<%= company.equipment %>', '<%= company.city %>', '<%= company.description %>')">
+                       <div class="company-text-container">
+                        <h1><%= company.companyName %></h1>
+                        <p><%= company.description %></p>
+                        <p class="company-city"><%= company.city %></p>
+                       </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+
+        <div class="company-container" style="display: none;" id="company-container">
+            <div class="company-part">
+                <h1 id="company-title"></h1>
+                <!-- <img src="/images/example-logo.jpg" alt=""> -->
+                <p id="company-description"></p>
+                <p id="company-city" class="company-part-city"></p>
+            </div>
+            <div class="transport-part">
+                <h1>Meie varustus</h1>
+                <p id="company-equipment"></p>
+            </div>
+            <div class="contact-part">
+                <h1>Side</h1>
+                <p id="company-mail"></p>
+                <p id="company-phone"></p>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-wrapper">
+                <div class="img-footer-container">
+                    <a href="/companies" onclick="reloadPage()">
+                        <img src="/images/companies-active.png" alt="" style="scale: 1.25;">
+                    </a>
+                </div>
+                <div class="img-footer-container">
+                    <a href="/advertisment" onclick="reloadPage()">
+                        <img src="/images/order.png" alt="">
+                    </a>
+                </div>
+                <div class="img-footer-container">
+                    <a href="/profile" onclick="reloadPage()">
+                        <img src="/images/user-logo.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var mainContainer = document.querySelector('.main-container');
+            var visibleHeight = window.innerHeight; // высота видимой области
+            mainContainer.style.minHeight = visibleHeight + 'px';
+
+            var companyContainer = document.querySelector('.company-container');
+            companyContainer.style.minHeight = visibleHeight - 50 + 'px';
+        }
+    </script>
+
+    <script src="/javascripts/companies.js"></script>
+</body>
+</html>

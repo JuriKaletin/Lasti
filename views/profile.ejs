@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    
+    <link rel="apple-touch-icon" href="/images/lasti-logo.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+    <div class="main-container">
+        <div class="logout-button-container" id="logout-button">
+            <a href="/profile/logout"><img src="/images/logout-icon.png" alt=""></a>
+        </div>
+        
+        <div class="form-container">
+            <div class="user-info-container">
+                <h1 id="username-text"><%= user.username %></h1>
+                <p id="phone-text"><%= user.phone %></p>
+                <p><%= user.email %></p>    
+            </div>
+
+            <input type="text" id="username" placeholder="Nimi ja Perekonnanimi" value="<%= user.username %>">
+            <input type="text" id="phone" placeholder="Telefoninumber" value="<%= user.phone %>">
+            <div class="form-confirm-button" onclick="editUser()" id="confirm-button">Kinnita</div>
+            <p class="delete-account" id="delete-account">Tühista konto</p>
+        </div>
+
+    </div>
+        
+    <footer>
+        <div class="footer-wrapper">
+            <div class="img-footer-container">
+                <a href="/companies" onclick="reloadPage()">
+                    <img src="/images/companies.png" alt="" style="scale: 1.25;">
+                </a>
+            </div>
+            <div class="img-footer-container">
+                <a href="/advertisment" onclick="reloadPage()">
+                    <img src="/images/order.png" alt="">
+                </a>
+            </div>
+            <div class="img-footer-container">
+                <a href="/profile" onclick="reloadPage()">
+                    <img src="/images/user-logo-active.png" alt="">
+                </a>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var mainContainer = document.querySelector('.main-container');
+            var visibleHeight = window.innerHeight; // высота видимой области
+            mainContainer.style.minHeight = visibleHeight + 'px';
+        }
+    </script>
+
+    <script src="/javascripts/profile.js"></script>
+</body>
+</html>

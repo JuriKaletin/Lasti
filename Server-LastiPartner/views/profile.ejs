@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    
+    <link rel="apple-touch-icon" href="/images/lasti-partner-logo.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+    <div class="main-container">
+        <div class="logout-button-container" id="logout-button">
+            <a href="/profile/logout"><img src="/images/logout-icon.png" alt=""></a>
+        </div>
+        
+        <div class="form-container" style="margin-top: 70px; margin-bottom: 70px;">
+            <div class="user-info-container">
+                <label for="fileInput" class="custom-file-upload">
+                <% if (user.photo) { %>
+                    <img class="profile-img" src="<%= user.photo %>" alt="">
+                <% } else { %>
+                    <img class="profile-img" src="/images/no-logo.png">
+                <% } %>
+                </label>
+                <h1 id="username-text"><%= user.companyName %></h1>
+                <p id="phone-text"><%= user.phone %></p>
+                <p><%= user.email %></p>    
+                <p id="city-text" style="color: #E2574C;"><%= user.city %></p>
+            </div>
+
+            <input type="text" id="username" placeholder="Ettevõtlus nimi" value="<%= user.companyName %>">
+            <input type="text" id="phone" placeholder="Telefoninumber" value="<%= user.phone %>">
+            <input type="text" id="city" placeholder="Linn" value="<%= user.city %>">
+            <textarea id="description" placeholder="Kirjeldus" class="advertisment-description-form"><%= user.description %></textarea>
+            <textarea id="equipment" placeholder="Varustus" class="advertisment-description-form"><%= user.equipment %></textarea>
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            <div class="form-confirm-button" onclick="editUser()" id="confirm-button">Kinnita</div>
+            <p class="delete-account" id="delete-account">Tühista konto</p>
+        </div>
+
+    </div>
+        
+    <footer>
+        <div class="footer-wrapper">
+            <div class="img-footer-container">
+                <a href="/advertisment" onclick="reloadPage()">
+                    <img src="/images/order.png" alt="">
+                </a>
+            </div>
+            <div class="img-footer-container">
+                <a href="/profile" onclick="reloadPage()">
+                    <img src="/images/user-logo-active.png" alt="">
+                </a>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var mainContainer = document.querySelector('.main-container');
+            var visibleHeight = window.innerHeight; // высота видимой области
+            mainContainer.style.minHeight = visibleHeight + 'px';
+        }
+    </script>
+
+    <script src="/javascripts/profile.js"></script>
+</body>
+</html>

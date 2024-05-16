@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertisment</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="apple-touch-icon" href="/images/lasti-partner-logo.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+    <div class="main-container">
+        <div class="back-button-container" id="back-button">
+            <img src="/images/back-button.png" alt="">
+        </div>
+
+        <div class="advertisments-container" id="ad-container">
+            <input type="text" id="city-search" placeholder="Sisestage linn" oninput="search()">
+
+            <h1 class="advertisement-label">Kuulutused</h1>
+            <div class="advertisments">
+                <% advertisements.forEach(function(advertisement) { %>
+                    <div class="advertisment" id="<%= advertisement.id %>">
+                        <div class="advertisment-text-container">
+                            <div class="like-container">
+                                <% if (advertisement.isLikedByUser) { %>
+                                    <img src="/images/heart-active.svg" alt="" onclick="unlikeAdvertisment('<%= advertisement.id %>')">
+                                <% } else { %>
+                                    <img src="/images/heart.svg" alt="" onclick="likeAdvertisment('<%= advertisement.id %>')">
+                                <% } %>
+                            </div>
+                            <p class="advertisment-city"><%= advertisement.city %></p>
+                            <p><%= advertisement.address %></p>
+                            <p><%= advertisement.username %></p>
+                            <p><%= advertisement.phone %></p>
+                            <p class="advertisment-description"><%= advertisement.description %></p>
+                            <p class="advertisment-date"><%= advertisement.date %></p>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-wrapper">
+                <div class="img-footer-container">
+                    <a href="/advertisment" onclick="reloadPage()">
+                        <img src="/images/order.png" alt="" id="add-advertisment">
+                    </a>
+                </div>
+                <div class="img-footer-container">
+                    <a href="/profile" onclick="reloadPage()">
+                        <img src="/images/user-logo.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var mainContainer = document.querySelector('.main-container');
+            var visibleHeight = window.innerHeight; // высота видимой области
+            mainContainer.style.minHeight = visibleHeight + 'px';
+        }
+    </script>
+
+    <script src="/javascripts/advertisment.js"></script>
+</body>
+</html>

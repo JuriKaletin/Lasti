@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authorization</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <link rel="apple-touch-icon" href="/images/lasti-partner-logo.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+    <div class="main-container">
+        <div class="back-button-container" id="back-button">
+            <img src="/images/back-button.png" alt="">
+        </div>
+
+        <div class="img-container">
+            <img src="/images/truck-main.png" alt="">
+        </div>
+
+        <div class="form-container">
+            <div class="form-container-log" id="form-container-log">
+                <h1>Logi sisse</h1>
+                <input type="text" id="email" placeholder="Epost" oninput="giveSuccessToLogBtn()">
+                <input type="password" id="password" placeholder="Pass" oninput="giveSuccessToLogBtn()">
+                <a id="registration-button">Registreerimine</a>
+                <div class="form-confirm-button" id="form-confirm-button-log">Kinnita</div>
+            </div>
+
+            <div class="form-container-reg" id="form-container-reg" style="display: none;">
+                <h1>Registreerimine</h1>
+                <input type="text" id="email-reg" placeholder="E-post" oninput="giveSuccessToRegBtn()">
+                <input type="text" id="phone-reg" placeholder="Telefoninumber" oninput="giveSuccessToRegBtn()">
+                <input type="text" id="name-reg" placeholder="Ettevõtlus nimi" oninput="giveSuccessToRegBtn()">
+                <input type="text" id="city-reg" placeholder="Linn" oninput="giveSuccessToRegBtn()">
+                <input type="password" id="password-reg" placeholder="Pass" oninput="giveSuccessToRegBtn()">
+                <input type="password" id="password-check-reg" placeholder="Korrage pass" oninput="giveSuccessToRegBtn()">
+                <div class="form-confirm-button" id="form-confirm-button">Kinnita</div>
+            </div>
+
+            <div class="form-container-reg" id="form-container-check" style="display: none;">
+                <h1>E-post kontrollimine</h1>
+                <input type="text" id="code-check" placeholder="Koodi kirjast">
+                <div class="form-confirm-button" id="form-confirm-button-check">Kinnita</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        window.onload = function() {
+            var mainContainer = document.querySelector('.main-container');
+            var visibleHeight = window.innerHeight; // высота видимой области
+            mainContainer.style.minHeight = visibleHeight + 'px';
+        }
+    </script>
+
+    <script src="/javascripts/authorization.js"></script>
+</body>
+</html>

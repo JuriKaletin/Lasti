@@ -1,0 +1,16 @@
+{
+    "name": "Lasti",
+    "short_name": "lasti",
+    "description": "The last step in solving your problem",
+    "start_url": "/companies",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "icons": [
+      {
+        "src": "/images/lasti-logo.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }

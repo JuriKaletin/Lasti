@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertisment</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="apple-touch-icon" href="/images/lasti-logo.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+    <div class="main-container">
+        <div class="back-button-container" id="back-button">
+            <img src="/images/back-button.png" alt="">
+        </div>
+
+        <div class="advertisments-container" id="ad-container">
+            <h1>Minu kuulutused</h1>
+            <div class="advertisments">
+                <% advertisements.forEach(function(advertisement) { %>
+                    <div class="advertisment" id="<%= advertisement._id %>">
+                        <div class="advertisment-text-container">
+                            <p><%= advertisement.city %></p>
+                            <p><%= advertisement.address %></p>
+                            <p class="advertisment-description"><%= advertisement.description %></p>
+                        </div>
+                        <div class="advertisment-buttons-container">
+                            <img src="/images/trash.svg" alt="" onclick="deleteAdvertisment('<%= advertisement._id %>')">
+                            <a class="advertisment-buttons-container-link" href="/advertisment/likes-advertisment/<%= advertisement._id %>">
+                                <img class="advertisment-buttons-container-heart" src="/images/heart.svg" alt="" onclick="likesAdvertisment('<%= advertisement._id %>')">
+                            </a>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+
+        <div class="form-container advertisment-form" style="display: none;" id="ad-form-container">
+                <h1>Lisa kuulutus</h1>
+                <input type="text" id="city" placeholder="Linn" oninput="giveSuccessToConfirmBtn()">
+                <input type="text" id="address" placeholder="Aadress" oninput="giveSuccessToConfirmBtn()">
+                <textarea id="description" placeholder="Kirjeldus" class="advertisment-description-form" oninput="giveSuccessToConfirmBtn()"></textarea>
+                <div class="form-confirm-button" id="confirm-button">Kinnita</div>
+        </div>
+
+        <footer>
+            <div class="footer-wrapper">
+                <div class="img-footer-container">
+                    <a href="/companies" onclick="reloadPage()">
+                        <img src="/images/companies.png" alt="" style="scale: 1.25;">
+                    </a>
+                </div>
+                <div class="img-footer-container">
+                    <img src="/images/plus.svg" alt="" style="width: 35px;" id="add-advertisment">
+                </div>
+                <div class="img-footer-container">
+                    <a href="/profile" onclick="reloadPage()">
+                        <img src="/images/user-logo.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var mainContainer = document.querySelector('.main-container');
+            var visibleHeight = window.innerHeight; // высота видимой области
+            mainContainer.style.minHeight = visibleHeight + 'px';
+        }
+    </script>
+
+    <script src="/javascripts/advertisment.js"></script>
+</body>
+</html>
