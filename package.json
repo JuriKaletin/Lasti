@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+      "start": "npm-run-all --parallel start-lasti-master start-server-lastipartner",
+      "start-server-lastipartner": "cd Server-LastiPartner && npm start",
+      "start-lasti-master": "node ./bin/www"
+    
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -17,6 +20,7 @@
     "jade": "~1.11.0",
     "mongoose": "^8.3.1",
     "morgan": "~1.9.1",
-    "nodemailer": "^6.9.13"
+    "nodemailer": "^6.9.13",
+    "npm-run-all": "^4.1.5"
   }
 }
